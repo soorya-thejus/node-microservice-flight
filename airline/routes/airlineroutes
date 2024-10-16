@@ -1,0 +1,8 @@
+const express = require("express");
+const {createairline,getairlines}=require("../controllers/airlinecontroller");
+const router=express.Router();
+
+router.post("/",createairline);
+router.get("/", getairlines);
+
+module.exports=router;

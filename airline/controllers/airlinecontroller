@@ -1,0 +1,21 @@
+const Airline=require("../models/airline");
+
+exports.createairline=async(req,res)=>{
+    try{
+        const airline= new Airline(req.body);
+        await airline.save();
+        res.status(201).json(airline);
+    } catch(error){
+        res.status(500).json({error:error.message});
+    }
+
+};
+
+exports.getairlines=async(req, res)=>{
+    try{
+        const airlines= await Airline.find();
+        res.status(200).json(airlines);
+    } catch(error){
+        res.status(500).json({error:error.message});
+    }
+};
